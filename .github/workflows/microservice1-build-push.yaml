@@ -2,7 +2,7 @@ name: microservice1-build-push-master
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
