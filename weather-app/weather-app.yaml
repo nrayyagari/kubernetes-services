@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: weather
+ # annotations:
+ #   external-dns.alpha.kubernetes.io/hostname: weather.nitinayyagari.com
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    name: http
+    targetPort: 3000
+  selector:
+    app: weather
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: weather
+  template:
+    metadata:
+      labels:
+        app: weather
+    spec:
+      containers:
+      - name: weather
+        image: 927862243533.dkr.ecr.us-east-1.amazonaws.com/app:v8
+        ports:
+          - containerPort: 3000
+
+
+#helm upgrade -i prometheus prometheus-community/prometheus \
+#  --set alertmanager.persistentVolume.storageClass="gp2",server.persistentVolume.storageClass="gp2"
+
+# eksctl create addon --name aws-ebs-csi-driver --cluster my-cluster --service-account-role-arn arn:aws:iam::111122223333:role/AmazonEKS_E
+
+
+#eksctl create addon --name aws-ebs-csi-driver --cluster eks-cluster-1 --service-account-role-arn arn:aws:iam::927862243533:role/AmazonEKS_EBS_CSI_DriverRole --force
