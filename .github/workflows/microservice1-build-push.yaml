@@ -3,8 +3,6 @@ name: microservice1-build-push-master
 on:
   push:
     branches: [ master ]
-    paths:
-    - 'microservice1/**'
 
 jobs:
   build:
