@@ -2,7 +2,7 @@ name: microservice2-build-push-master
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths:
     - 'microservice2/**'
 
