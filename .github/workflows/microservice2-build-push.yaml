@@ -3,8 +3,7 @@ name: microservice2-build-push-master
 on:
   push:
     branches: [ main ]
-    paths:
-      - microservice2
+    paths: [ microservice2 ]
 
 jobs:
   build:
