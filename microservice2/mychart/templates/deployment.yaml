@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mychart.fullname" . }}-weather
+  labels:
+  {{- include "mychart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.weather.replicas }}
+  selector:
+    matchLabels:
+      app: weather
+    {{- include "mychart.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: weather
+      {{- include "mychart.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ quote .Values.kubernetesClusterDomain }}
+        image: {{ .Values.weather.weather.image.repository }}:{{ .Values.weather.weather.image.tag
+          | default .Chart.AppVersion }}
+        name: weather
+        ports:
+        - containerPort: 3000
+        resources: {}

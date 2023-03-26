@@ -1,0 +1,12 @@
+kubernetesClusterDomain: cluster.local
+weather:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+  replicas: 3
+  type: NodePort
+  weather:
+    image:
+      repository: 927862243533.dkr.ecr.us-east-1.amazonaws.com/app
+      tag: v8

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mychart.fullname" . }}-weather
+  labels:
+  {{- include "mychart.labels" . | nindent 4 }}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: weather.nitinayyagari.com
+spec:
+  type: {{ .Values.weather.type }}
+  selector:
+    app: weather
+  {{- include "mychart.selectorLabels" . | nindent 4 }}
+  ports:
+	{{- .Values.weather.ports | toYaml | nindent 2 -}}
