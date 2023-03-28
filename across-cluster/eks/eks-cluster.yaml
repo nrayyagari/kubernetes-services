@@ -5,7 +5,7 @@ metadata:
   region: us-east-1
 
 vpc:
-  id: vpc-05de13f328e16e7a5
+  id: vpc-0592272fb1131f199
   cidr: "10.0.0.0/16"
   subnets:
 #    public:
@@ -17,16 +17,16 @@ vpc:
 #        id: subnet-0d9a3c6ff4b7b3b1b
     private:
       us-east-1a:
-        id: subnet-071f2e3d82da0deed
+        id: subnet-0618e15e686962b9e
       us-east-1b:
-        id: subnet-0ad5d5e79c546eec4
+        id: subnet-0b4027829a02b33a1
       us-east-1c:
-        id: subnet-0aeab8a5afe25beda
+        id: subnet-06e9bdff8feaed619
 
 nodeGroups:
   - name: EKS-private-workers
-    instanceType: t2.small
-    minSize: 2
+    instanceType: t2.medium
+    minSize: 3
     maxSize: 4
     ssh: 
       allow: true
