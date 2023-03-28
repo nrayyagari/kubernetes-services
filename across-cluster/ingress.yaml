@@ -16,13 +16,13 @@ spec:
                 port:
                   number: 80
             path: / 
-    - host: weather.nitinayyagari.com
+    - host: naaistam.nitinayyagari.com
       http:
         paths:
           - pathType: Prefix
             backend:
               service:
-                name: weather
+                name: naaistam
                 port:
                   number: 80
             path: /
