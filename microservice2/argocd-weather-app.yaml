@@ -3,13 +3,12 @@ kind: Application
 metadata:
   name: weather-app
   namespace: argocd
-  environment: dev
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
 
-  # Source of the application manifests
+  # Source of application manifests
   source:
     repoURL: https://github.com/nrayyagari/kubernetes-microservices.git
     targetRevision: HEAD
