@@ -46,10 +46,9 @@ spec:
       - name: external-dns
         image: k8s.gcr.io/external-dns/external-dns:v0.13.2
         args:
-        - --source=service
-        - --source=ingress
+        - --source=ingress # source=service can also be added here
         - --interval=1m
-        - --policy=sync
+        - --policy=sync # have other policies like upsert
         - --domain-filter=nitinayyagari.com # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
         - --provider=aws
         - --aws-zone-type=public # only look at public hosted zones (valid values are public, private or no value for both)
