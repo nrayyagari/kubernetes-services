@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: naaistam
-  #annotations:
-  #  external-dns.alpha.kubernetes.io/hostname: weather.nitinayyagari.com
+  name: weather
 spec:
   type: NodePort
   ports:
@@ -11,23 +9,23 @@ spec:
     name: http
     targetPort: 3000
   selector:
-    app: naaistam
+    app: weather
     
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: naaistam
+  name: weather
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: naaistam
+      app: weather
   template:
     metadata:
       labels:
-        app: naaistam
+        app: weather
     spec:
       containers:
       - name: weather

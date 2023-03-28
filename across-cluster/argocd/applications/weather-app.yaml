@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: naaistam
+  name: argo-applications
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+ # finalizers:
+ #   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
 
