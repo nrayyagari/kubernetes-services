@@ -6,13 +6,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: nginx.nitinayyagari.com
+    - host: weather.nitinayyagari.com
       http:
         paths:
           - pathType: Prefix
             backend:
               service:
-                name: nginx
+                name: weather
                 port:
                   number: 80
             path: / 
