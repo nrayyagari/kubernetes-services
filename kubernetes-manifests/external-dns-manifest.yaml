@@ -2,6 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: external-dns
+  namespace: cs
 rules:
 - apiGroups: [""]
   resources: ["services","endpoints","pods"]
@@ -17,6 +18,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: external-dns-viewer
+  namespace: cs
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -30,6 +32,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: external-dns
+  namespace: cs
 spec:
   strategy:
     type: Recreate
