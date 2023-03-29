@@ -1,15 +1,15 @@
-name: weather-app-build-push-master
+name: microservice2-build-push-master
 
 on:
   push:
     paths: 
-      - 'microservices-src-dir/weather-app/**' 
+      - 'microservices-src-dir/microservice2/**' 
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted 
   ECR_REPOSITORY: microservice2  # Push docker image to this ECR repository one
-  APP_DIR: microservices-src-dir/weather-app # Directory containing Dockerfile & app code
+  APP_DIR: microservices-src-dir/microservice2 # Directory containing Dockerfile & app code
   # Kubernetes manifest file for the application. Github actions will update the image tag(most recent one) in this file after uploading to ECR
-  MANIFEST_FILE_PATH: kubernetes-manifests/weather-app-manifest.yaml 
+  MANIFEST_FILE_PATH: kubernetes-manifests/microservice2-manifest.yaml 
 
 
 jobs:

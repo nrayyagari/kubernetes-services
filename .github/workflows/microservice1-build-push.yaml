@@ -1,15 +1,15 @@
-name: nginx-app-build-push-master
+name: microservice1-build-push-master
 
 on:
   push:
     paths: 
-      - 'microservices-src-dir/nginx-app/**'
+      - 'microservices-src-dir/microservice1/**'
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted one
   ECR_REPOSITORY: microservice1  # Push docker image to this ECR repository one
-  APP_DIR: microservices-src-dir/nginx-app # Directory containing Dockerfile & app code
+  APP_DIR: microservices-src-dir/microservice1 # Directory containing Dockerfile & app code
   # Kubernetes manifest file for the application. Github actions will update the image tag(most recent one) in this file after uploading to ECR
-  MANIFEST_FILE_PATH: kubernetes-manifests/nginx-app-manifest.yaml 
+  MANIFEST_FILE_PATH: kubernetes-manifests/microservice1-manifest.yaml 
 
 jobs:
   build:
