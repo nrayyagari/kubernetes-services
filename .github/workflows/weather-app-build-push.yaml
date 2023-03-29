@@ -3,8 +3,7 @@ name: weather-app-build-push-master
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'microservices-src-dir/weather-app/*'
+    paths: [ microservices-src-dir/weather-app/** ]
 
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted
