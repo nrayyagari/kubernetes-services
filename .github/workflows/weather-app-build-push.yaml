@@ -3,7 +3,6 @@ name: weather-app-build-push-master
 on:
   push:
     branches: [ main ]
-    paths: microservices-src-dir/weather-app/** # Only trigger workflow if changes are made to this directory
 
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted
