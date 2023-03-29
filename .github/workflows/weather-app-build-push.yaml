@@ -4,13 +4,16 @@ on:
   push:
     branches: [ main ]
     paths: 
-      - 'microservices-src-dir/weather-app/**'
+      - 'microservices-src-dir/weather-app/**' # Trigger workflow only if any file in this directory is changed
 
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted 
   ECR_REPOSITORY: microservice2  # Push docker image to this ECR repository one
   APP_DIR: microservices-src-dir/weather-app # Directory containing Dockerfile & app code
-  MANIFEST_FILE_PATH: kubernetes-manifests/weather-app-manifest.yaml # Kubernetes manifest file for the application
+  
+  # Kubernetes manifest file for the application. Github actions will update the image tag(most recent one) in this file after uploading to ECR
+  MANIFEST_FILE_PATH: kubernetes-manifests/weather-app-manifest.yaml 
+
 
 jobs:
   build:
@@ -44,7 +47,7 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
     
-    - name: Commit manifest file changes
+    - name: Updates Image tag in manifest file and commits to git
       env: 
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}-${{ github.run_number }}
