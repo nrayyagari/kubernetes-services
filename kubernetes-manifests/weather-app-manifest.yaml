@@ -48,6 +48,6 @@ spec:
     spec:
       containers:
       - name: weather
-        image: 927862243533.dkr.ecr.us-east-1.amazonaws.com/microservice2:e8d659e6ef4ca657e06b74f76321b0fdd3d5aa47-29
+        image: 927862243533.dkr.ecr.us-east-1.amazonaws.com/microservice2:ee0fe0c9668358872bf2627a472fcae39024624e-39
         ports:
           - containerPort: 3000
