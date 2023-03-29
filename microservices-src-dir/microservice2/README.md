@@ -1,0 +1,1 @@
+app which fetches weather data of a city by making an API call
