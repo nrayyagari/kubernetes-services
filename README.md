@@ -1,4 +1,4 @@
-[![microservice1-build-push-master](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice1-build-push.yaml/badge.svg?branch=main)](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice1-build-push.yaml)
+[![microservice1-build-push-master](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice1-build-push.yaml/badge.svg?event=workflow_run)](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice1-build-push.yaml)
 [![microservice2-build-push-master](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice2-build-push.yaml/badge.svg?branch=main)](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice2-build-push.yaml)
 
 
