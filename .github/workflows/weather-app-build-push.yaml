@@ -3,12 +3,12 @@ name: weather-app-build-push-master
 on:
   push:
     branches: [ main ]
-    #paths: 
-    #  - 'microservices-src-dir/weather-app/**'
+    paths:
+      - 'microservices-src-dir/weather-app/**'
 
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted
-  ECR_REPOSITORY: microservice2  # Push to this ECR repository
+  ECR_REPOSITORY: microservice2  # Push to this ECR repository one
   APP_DIR: microservices-src-dir/weather-app # Directory containing Dockerfile & app code
   MANIFEST_FILE_PATH: kubernetes-manifests/weather-app-manifest.yaml # Kubernetes manifest file for the application
 
