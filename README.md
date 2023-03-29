@@ -1,3 +1,6 @@
+[![microservice1-build-push-master](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice1-build-push.yaml/badge.svg?branch=main)](https://github.com/nrayyagari/kubernetes-microservices/actions/workflows/microservice1-build-push.yaml)
+
+
 # kubernetes-services
 
 eksctl create iamserviceaccount \
