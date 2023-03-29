@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-app
+  name: microservice1
   namespace: argocd
  # finalizers:
  #   - resources-finalizer.argocd.argoproj.io
@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/nrayyagari/kubernetes-microservices.git
     targetRevision: HEAD
-    path: kubernetes-manifests/nginx-app-manifest.yaml
+    path: kubernetes-manifests/microservice1-manifest.yaml
 
   # Destination cluster and namespace to deploy the application
   destination:
