@@ -32,7 +32,7 @@ jobs:
         ECR_REPOSITORY: microservice2
         IMAGE_TAG: ${{ github.sha }}-${{ github.run_number }}
       run: |
-        cd weather-app
+        cd microservices-src-dir/weather-app
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
