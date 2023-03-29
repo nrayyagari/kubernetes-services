@@ -48,6 +48,8 @@ jobs:
         sed -i "s#image:.*#image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG#g" $MANIFEST_FILE_PATH
     
     - name: Commit manifest file changes
+      env: 
+        MANIFEST_FILE_PATH: kubernetes-manifests/weather-app-manifest.yaml
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
