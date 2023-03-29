@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  AWS_REGION: us-east-1  # AWS Region where ECR is hosted
+  AWS_REGION: us-east-1  # AWS Region where ECR is hosted one
   ECR_REPOSITORY: microservice2  # Push docker image to this ECR repository one
   APP_DIR: microservices-src-dir/weather-app # Directory containing Dockerfile & app code
   MANIFEST_FILE_PATH: kubernetes-manifests/weather-app-manifest.yaml # Kubernetes manifest file for the application

@@ -3,10 +3,8 @@ name: nginx-app-build-push-master
 on:
   push:
     branches: [ main ]
-    paths: microservices-src-dir/nginx-app/** # Only trigger workflow if changes are made to this directory
-
 env:
-  AWS_REGION: us-east-1  # AWS Region where ECR is hosted
+  AWS_REGION: us-east-1  # AWS Region where ECR is hosted one
   ECR_REPOSITORY: microservice1  # Push docker image to this ECR repository one
   APP_DIR: microservices-src-dir/nginx-app # Directory containing Dockerfile & app code
   MANIFEST_FILE_PATH: kubernetes-manifests/nginx-app-manifest.yaml # Kubernetes manifest file for the application
