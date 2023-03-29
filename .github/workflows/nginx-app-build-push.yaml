@@ -9,7 +9,8 @@ env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted one
   ECR_REPOSITORY: microservice1  # Push docker image to this ECR repository one
   APP_DIR: microservices-src-dir/nginx-app # Directory containing Dockerfile & app code
-  MANIFEST_FILE_PATH: kubernetes-manifests/nginx-app-manifest.yaml # Kubernetes manifest file for the application
+  # Kubernetes manifest file for the application. Github actions will update the image tag(most recent one) in this file after uploading to ECR
+  MANIFEST_FILE_PATH: kubernetes-manifests/nginx-app-manifest.yaml 
 
 jobs:
   build:
