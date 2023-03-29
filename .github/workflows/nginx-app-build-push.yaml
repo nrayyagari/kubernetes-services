@@ -3,7 +3,8 @@ name: nginx-app-build-push-master
 on:
   push:
     branches: [ main ]
-    paths: [ microservices-src-dir/nginx-app/** ]
+    paths: 
+      - 'microservices-src-dir/nginx-app/**'
 
 jobs:
   build:
@@ -40,9 +41,10 @@ jobs:
       uses: fjogeleit/yaml-update-action@main
       with:
         valueFile: 'microservice2/weather-app.yaml'
-        propertyPath: 'backend.version'
+        propertyPath: 'spec.template.spec.containers[0].image'
         value: ${{ steps.image.outputs.version }}
-        branch: deployment/${{ steps.image.outputs.version }}
-        targetBranch: development
-        createPR: true
+        branch: main
+        #branch: deployment/${{ steps.image.outputs.version }}
+        #targetBranch: main
+        #createPR: true
         message: 'Update Image Version to ${{ steps.image.outputs.version }}' 
