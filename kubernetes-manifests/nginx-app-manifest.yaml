@@ -50,6 +50,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: 927862243533.dkr.ecr.us-east-1.amazonaws.com/microservice1:de3b4247cd7fa54b425f0063da405bbd52111319-12
+        image: 927862243533.dkr.ecr.us-east-1.amazonaws.com/microservice1:b55fa6cf6b69e970db0c55f67bd4ed7d90636dc5-13
         ports:
           - containerPort: 80
