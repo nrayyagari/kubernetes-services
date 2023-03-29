@@ -3,7 +3,8 @@ name: weather-app-build-push-master
 on:
   push:
     branches: [ main ]
-   # paths: [ microservices-src-dir/weather-app/** ] small change
+  paths:
+    - 'microservices-src-dir/weather-app/**'
 
 jobs:
   build:
