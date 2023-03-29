@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: ingress-microservice1
   namespace: default
 spec:
   ingressClassName: nginx
   rules:
-    - host: nginx.nitinayyagari.com
+    - host: microservice1.nitinayyagari.com
       http:
         paths:
           - pathType: Prefix
             backend:
               service:
-                name: nginx
+                name: microservice1
                 port:
                   number: 80
             path: / 
@@ -20,9 +20,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: microservice1
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: nginx.nitinayyagari.com
+    external-dns.alpha.kubernetes.io/hostname: microsevice1.nitinayyagari.com
 spec:
   type: NodePort
   ports:
@@ -30,23 +30,23 @@ spec:
     name: http
     targetPort: 80
   selector:
-    app: nginx
+    app: microservice1
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: microservice1
   namespace: default
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: microservice1
   template:
     metadata:
       labels:
-        app: nginx
+        app: microservice1
     spec:
       containers:
       - name: nginx
