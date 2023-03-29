@@ -3,6 +3,7 @@ name: nginx-app-build-push-master
 on:
   push:
     branches: [ main ]
+    paths: microservices-src-dir/nginx-app/** # Only trigger workflow if changes are made to this directory
 
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted
@@ -42,17 +43,16 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
     
-    - name: Update manifest file
+    - name: Commit manifest file changes
       env: 
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}-${{ github.run_number }}
       run: |
+        git pull --rebase
         sed -i "s#image:.*#image: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG#g" ${{ env.MANIFEST_FILE_PATH }}
-    
-    - name: Commit manifest file changes
-      run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
+        git pull --rebase
         git add ${{ env.MANIFEST_FILE_PATH }}
         git commit -m "Update image in ${{ env.MANIFEST_FILE_PATH }} for #${{ github.run_number }}"
       
@@ -61,4 +61,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
-        force: true
