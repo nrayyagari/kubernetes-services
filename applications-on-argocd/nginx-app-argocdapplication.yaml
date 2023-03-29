@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/nrayyagari/kubernetes-microservices.git
     targetRevision: HEAD
-    path: microservice2
+    path: kubernetes-manifests/nginx-app-manifest.yaml
 
   # Destination cluster and namespace to deploy the application
   destination:

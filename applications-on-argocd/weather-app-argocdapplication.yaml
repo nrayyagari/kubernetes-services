@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-applications
+  name: weather-app
   namespace: argocd
  # finalizers:
  #   - resources-finalizer.argocd.argoproj.io
@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/nrayyagari/kubernetes-microservices.git
     targetRevision: HEAD
-    path: microservice2
+    path: kubernetes-manifests/weather-app-manifest.yaml
 
   # Destination cluster and namespace to deploy the application
   destination:
