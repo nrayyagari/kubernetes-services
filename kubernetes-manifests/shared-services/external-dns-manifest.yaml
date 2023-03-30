@@ -60,6 +60,7 @@ spec:
         args:
         - --source=ingress # source=service can also be added here
         - --source=service
+        - --policy=sync
         - --interval=1m # have other policies like upsert - --policy=sync
         - --domain-filter=nitinayyagari.com # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
         - --provider=aws
