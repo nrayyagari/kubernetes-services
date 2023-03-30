@@ -4,7 +4,6 @@ metadata:
   name: shared-services
   namespace: argocd
 spec:
-
   project: default
   # Source of application manifests
   source:

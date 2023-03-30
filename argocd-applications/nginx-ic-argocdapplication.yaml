@@ -1,0 +1,24 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress-controller
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ''
+    repoURL: 'https://helm.nginx.com/stable'
+    targetRevision: 0.4.1
+    chart: nginx-ingress
+    helm:
+      valueFiles:
+        - values.yaml
+    #  parameters:
+    #    - name: alertmanager.enabled
+    #      value: 'false'
+    #    - name: pushgateway.enabled
+    #      value: 'false'
