@@ -8,19 +8,15 @@ spec:
   project: default
 
   source:
-    path: ''
-    repoURL: 'https://helm.nginx.com/stable'
-    targetRevision: 0.4.1
+    repoURL: https://helm.nginx.com/stable
+    targetRevision: 1.41.3
     chart: nginx-ingress
-    helm:
-      valueFiles:
-        - values.yaml
-    #  parameters:
-    #    - name: alertmanager.enabled
-    #      value: 'false'
-    #    - name: pushgateway.enabled
-    #      value: 'false'
 
   destination:
-    namespace: default
+    namespace: cs
     server: https://kubernetes.default.svc
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
