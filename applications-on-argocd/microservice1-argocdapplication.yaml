@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: microservice1-application
+  name: microservice1
   namespace: ms1
 spec:
 
