@@ -8,9 +8,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://helm.nginx.com/stable
-    targetRevision: 1.41.3
-    chart: nginx-ingress
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 9.4.1
+    chart: nginx-ingress-controller
 
   destination:
     namespace: cs

@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  
+
   # Source of application manifests
   source:
     repoURL: https://github.com/nrayyagari/kubernetes-microservices.git
@@ -17,7 +17,7 @@ spec:
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: ms1
 
   syncPolicy:
     automated:

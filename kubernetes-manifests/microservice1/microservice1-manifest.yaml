@@ -22,8 +22,9 @@ kind: Service
 metadata:
   name: microservice1
   namespace: ms1
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: microsevice1.nitinayyagari.com
+  #annotations:
+  #  external-dns.alpha.kubernetes.io/hostname: microsevice1.nitinayyagari.com
+  # removing annotation because hostname will be assigned to through ingress-microservice1
 spec:
   type: NodePort
   ports:
