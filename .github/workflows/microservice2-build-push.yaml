@@ -6,7 +6,7 @@ on:
       - 'microservices-src-dir/microservice2/**' 
 env:
   AWS_REGION: us-east-1  # AWS Region where ECR is hosted 
-  ECR_REPOSITORY: microservice2  # Push docker image to this ECR repository
+  ECR_REPOSITORY: microservice2  # Push docker image to this ECR repository only
   APP_DIR: microservices-src-dir/microservice2 # Directory containing Dockerfile & app code
   # Kubernetes manifest file for the application. Github actions will update the image tag(most recent one) in this file after uploading to ECR
   MANIFEST_FILE_PATH: kubernetes-manifests/microservice2-manifest.yaml 
