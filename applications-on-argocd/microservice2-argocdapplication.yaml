@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: microservice1-application
+  namespace: ms1
+spec:
+
+  project: default
+  # Source of application manifests
+  source:
+    repoURL: https://github.com/nrayyagari/kubernetes-microservices.git
+    targetRevision: HEAD
+    path: kubernetes-manifests/microservice1
+
+  # Destination cluster and namespace to deploy the application
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

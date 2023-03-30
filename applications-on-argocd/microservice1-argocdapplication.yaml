@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: shared-applications
-  namespace: argocd
+  name: microservice1-application
+  namespace: ms1
 spec:
 
   project: default
@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/nrayyagari/kubernetes-microservices.git
     targetRevision: HEAD
-    path: kubernetes-manifests/shared-applications
+    path: kubernetes-manifests/microservice1
 
   # Destination cluster and namespace to deploy the application
   destination:
