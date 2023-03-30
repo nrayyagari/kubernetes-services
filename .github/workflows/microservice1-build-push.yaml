@@ -9,7 +9,7 @@ env:
   ECR_REPOSITORY: microservice1  # Push docker image to this ECR repository one
   APP_DIR: microservices-src-dir/microservice1 # Directory containing Dockerfile & app code
   # Kubernetes manifest file for the application. Github actions will update the image tag(most recent one) in this file after uploading to ECR
-  MANIFEST_FILE_PATH: kubernetes-manifests/microservice1-manifest.yaml 
+  MANIFEST_FILE_PATH: kubernetes-manifests/microservice1/microservice1-manifest.yaml 
 
 jobs:
   build:
