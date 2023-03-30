@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
   
   request(url, function(err, response, body) {
     if(err) {
-      console.error('There was an error trying to lookup weather data for' + city + '.');
+      console.error('There was an error trying to lookup weather data for this' + city + '.');
       res.render('index', {weather: null, error: 'Error, please try again!'});
     } else {
       let weather = JSON.parse(body);
