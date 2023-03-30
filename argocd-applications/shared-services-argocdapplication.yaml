@@ -5,6 +5,7 @@ metadata:
   namespace: argocd
 spec:
   project: default
+  
   # Source of application manifests
   source:
     repoURL: https://github.com/nrayyagari/kubernetes-microservices.git

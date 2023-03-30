@@ -5,10 +5,8 @@ metadata:
   name: nginx-ingress-controller
   namespace: argocd
 spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
   project: default
+
   source:
     path: ''
     repoURL: 'https://helm.nginx.com/stable'
@@ -22,3 +20,7 @@ spec:
     #      value: 'false'
     #    - name: pushgateway.enabled
     #      value: 'false'
+
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
