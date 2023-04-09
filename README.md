@@ -1,15 +1,35 @@
 
+# Theme of demo
+
+- For simplicity sake, assume DevOps engineer name is JC
+- JC adds a new microservice, say 'microservice3' within `microservices-src-dir` directory along with a dockerfile to build image
+- Then proceeds to create a CI workflow by creating `microservice3-build-push.yaml`, customize it with env variables like ECR repo for this new microservice
+- Thereafter, JC creates a kubernetes manifest file for that microservice under a folder called `microservice3` in `kubernetes-manifests` file
+
+## CI Part
+
+- Once he updates src code of his new microservices, Github actions will build the docker image, push it to ECR repo
+- Github itself updates the latest docker image tag in the kubernetes manifest file, so that it has name of the recent docker image
+
+## CD Part
+
+- We need to create ArgoCD application by running `kubectl create -f microservice3-application.yaml` (only one time task)
+- We also need to mention in above file, where to fetch kubernetes manifest file for this application. 
+- ArgoCD will periodically poll this file every 3 minutes. If it detects any change in manifest file, it will deploy the application automatically. 
+
+
 # Understanding Repo structure
 
 This repository is organized as follows:
 
 - `.github/`: Contains workflow for CI part(building and pushing docker image)
 - `argocd-applications`: Contains files for ArgoCD applications
+- `bootstrapping`: helm charts to bootstrap ArgoCD(created only once)
 - `kubernetes-manifests`: Contains Kubernetes manifest files for microservices and other shared applications across cluster(eg: external-dns)
 - `microservices-src-dir`: Contains src code and dockerfile for each microservice 
 
 
-# Building an end-to-end CI/CD pipeline
+# Stack used for building an end-to-end CI/CD pipeline
 
 1. EKS
    - Using AWS EKS - Managed Kubernetes Cluster
