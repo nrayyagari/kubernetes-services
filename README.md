@@ -3,15 +3,15 @@
 
 - For simplicity sake, assume DevOps engineer name is JC
 - JC adds a new microservice, say 'microservice3' within `microservices-src-dir` directory along with a dockerfile to build image
-- Then proceeds to create a CI workflow by creating `microservice3-build-push.yaml`, customize it with env variables like ECR repo for this new microservice
+- Then proceeds to create a CI workflow by creating `microservice3-build-push.yaml` in `.github` folder, customizes it with env variables like ECR repo for this new microservice
 - Thereafter, JC creates a kubernetes manifest file for that microservice under a folder called `microservice3` in `kubernetes-manifests` file
 
-## CI Part
+#### CI Part
 
 - Once he updates src code of his new microservices, Github actions will build the docker image, push it to ECR repo
 - Github itself updates the latest docker image tag in the kubernetes manifest file, so that it has name of the recent docker image
 
-## CD Part
+#### CD Part
 
 - We need to create ArgoCD application by running `kubectl create -f microservice3-application.yaml` (only one time task)
 - We also need to mention in above file, where to fetch kubernetes manifest file for this application. 
