@@ -10,9 +10,14 @@
 3. ArgoCD: Used for CD part
    - each ArgoCD application fetches Kubernetes files from given URL/folder in repo
    - updates service every 3 minutes(auto sync enabled)
-2. Nginx Ingress Controller: Configures HTTP load balancer according to Ingress resource. Using single load balancer to deliver multiple microservices. This is done through Ingress resource for each microservice
-3. External-DNS: Generates automatic DNS entries for services/ingress resources created in the cluster
-4. Prometheus Grafana: For monitoring Kubernetes cluster resources
+2. Nginx Ingress Controller: Configures HTTP load balancer using AWS ELB
+   - Using single load balancer to deliver multiple microservices. 
+   - Each microservice route configuration is mentioned through Ingress resource
+3. External-DNS: 
+   - Generates automatic DNS entries for services/ingress resources created in the cluster
+   - Removes the hassle to create DNS entries for each service
+4. Prometheus Grafana
+   - For monitoring Kubernetes cluster resources
 
 
 # Next improvements
