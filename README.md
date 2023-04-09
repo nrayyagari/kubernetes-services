@@ -1,4 +1,13 @@
 
+# Understanding Repo structure
+
+This repository is organized as follows:
+
+- `.github/`: Contains workflow for CI part(building and pushing docker image)
+- `argocd-applications`: Contains files for ArgoCD applications
+- `kubernetes-manifests`: Contains Kubernetes manifest files for microservices and other shared applications across cluster(eg: external-dns)
+- `microservices-src-dir`: Contains src code and dockerfile for each microservice 
+
 
 # Building an end-to-end CI/CD pipeline
 
