@@ -5,6 +5,7 @@ metadata:
   namespace: ms1
   annotations:
     external-dns.alpha.kubernetes.io/hostname: nitinayyagari.com
+    external-dns.alpha.kubernetes.io/alias: "true"
     kubernetes.io/ingress.class: nginx
 spec:
   ingressClassName: nginx
