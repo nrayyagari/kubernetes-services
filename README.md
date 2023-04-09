@@ -3,19 +3,21 @@
 
 - For simplicity sake, assume DevOps engineer name is JC
 - JC adds a new microservice, say 'microservice3' within `microservices-src-dir` directory along with a dockerfile to build image
-- Then proceeds to create a CI workflow by creating `microservice3-build-push.yaml` in `.github` folder, customizes it with env variables like ECR repo for this new microservice
-- Thereafter, JC creates a kubernetes manifest file for that microservice under a folder called `microservice3` in `kubernetes-manifests` file
+- Then, JC creates a kubernetes manifest file for that microservice under a folder called `microservice3` in `kubernetes-manifests` file
+- Thereafter proceeds to create a CI workflow by creating `microservice3-build-push.yaml` in `.github` folder, customizes it with env variables like ECR repo for this new microservice
+
 
 #### CI Part
 
-- Once he updates src code of his new microservices, Github actions will build the docker image, push it to ECR repo
-- Github itself updates the latest docker image tag in the kubernetes manifest file, so that it has name of the recent docker image
+- Once he updates src code of his new microservices, Github actions will build the docker image, pushes it to ECR repo by authenticating using secrets fed into Github Secrets
+- Github now itself updates the latest docker image tag in the kubernetes manifest file, so that it has name of the recent docker image
 
 #### CD Part
 
-- We need to create ArgoCD application by running `kubectl create -f microservice3-application.yaml` (only one time task)
-- We also need to mention in above file, where to fetch kubernetes manifest file for this application. 
+- JC needs to create ArgoCD application and deploy it by running `kubectl create -f microservice3-application.yaml` (only one time task)
+- JC also needs to mention in above file, where to fetch kubernetes manifest file for this application. 
 - ArgoCD will periodically poll this file every 3 minutes. If it detects any change in manifest file, it will deploy the application automatically. 
+- JC now is in relax mode :)
 
 
 # Understanding Repo structure
@@ -24,7 +26,7 @@ This repository is organized as follows:
 
 - `.github/`: Contains workflow for CI part(building and pushing docker image)
 - `argocd-applications`: Contains files for ArgoCD applications
-- `bootstrapping`: helm charts to bootstrap ArgoCD(created only once)
+- `bootstrapping`: helm charts to bootstrap ArgoCD(to be deployed only once)
 - `kubernetes-manifests`: Contains Kubernetes manifest files for microservices and other shared applications across cluster(eg: external-dns)
 - `microservices-src-dir`: Contains src code and dockerfile for each microservice 
 
