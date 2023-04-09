@@ -2,7 +2,8 @@
 
 # Building an end-to-end CI/CD pipeline
 
-1. EKS: Using AWS EKS - Managed Kubernetes Cluster
+1. EKS
+   - Using AWS EKS - Managed Kubernetes Cluster
 2. Github Actions: Used for CI part
    - builds docker image based on given src files path
    - authenticates and pushes to AWS ECR
@@ -16,6 +17,7 @@
 3. External-DNS: 
    - Generates automatic DNS entries for services/ingress resources created in the cluster
    - Removes the hassle to create DNS entries for each service
+   - Hosted zone name, frequency etc. are customizable.
 4. Prometheus Grafana
    - For monitoring Kubernetes cluster resources
 
