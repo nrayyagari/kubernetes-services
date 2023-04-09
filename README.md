@@ -1,27 +1,16 @@
 
 
+# Tech stack used to building an end-to-end CI/CD pipeline
 
-# kubernetes-services
+1. EKS: Using AWS EKS - Managed Kubernetes Cluster
+2. Nginx Ingress Controller: Configures HTTP load balancer according to Ingress resource. Using single load balancer to deliver multiple microservices. This is done through Ingress resource for each microservice
+3. External-DNS: Generates automatic DNS entries for services/ingress resources created in the cluster
+4. Prometheus Grafana: For monitoring Kubernetes cluster resources
 
-eksctl create iamserviceaccount \
-  --cluster=eks-cluster-1 \
-  --namespace=kube-system \
-  --name=aws-load-balancer-controller \
-  --role-name AmazonEKSLoadBalancerControllerRole \
-  --attach-policy-arn=arn:aws:iam::927862243533:policy/AWSLoadBalancerControllerIAMPolicy \
-  --approve
 
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
-  -n kube-system \
-  --set clusterName=eks-cluster-1 \
-  --set serviceAccount.create=false \
-  --set serviceAccount.name=aws-load-balancer-controller 
+# Next improvements
 
-  eksctl create iamserviceaccount \
-  --name ebs-csi-controller-sa \
-  --namespace kube-system \
-  --cluster eks-cluster-1 \
-  --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
-  --approve \
-  --role-only \
-  --role-name AmazonEKS_EBS_CSI_DriverRole
+1. Installing EFK for logging purpose
+2. Updating Github actions workflow to use IAM role instead of Github secrets
+3. Using AWS KMS for secret management
+4. Automatic Infrastructure creation based on IaC using Terraform
