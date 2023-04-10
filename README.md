@@ -14,7 +14,7 @@
    - Using single load balancer to deliver multiple microservices. 
    - Each microservice route configuration is mentioned through Ingress resource
 3. External-DNS: 
-   - Generates automatic DNS entries for services/ingress resources created in the cluster
+   - Generates automatic DNS entries in AWS Route 53 for services/ingress resources created in the cluster
    - Removes the hassle to create DNS entries for each service
    - Hosted zone name, frequency etc. are customizable.
 4. Prometheus Grafana
